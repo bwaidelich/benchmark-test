@@ -9,15 +9,15 @@ jobs:
   phpbench:
     name: PHPBench on ${{ matrix.php }} ${{ matrix.composer-flags }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php: [ '8.2', '8.3' ]
-        composer-flags: [ '' ]
     steps:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 8.2
           tools: composer:v2
-      - run: composer install --no-progress ${{ matrix.composer-flags }}
-      - run: vendor/bin/phpbench run --report=aggregate
+      - run: composer install --no-progress
+      - run: vendor/bin/phpbench run --report=aggregate > report.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bhpbench_report
+          path: report.txt
