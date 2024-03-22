@@ -8,7 +8,7 @@ on:
 
 jobs:
   phpbench:
-    name: PHPBench on ${{ matrix.php }} ${{ matrix.composer-flags }}
+    name: PHPBench
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -19,9 +19,9 @@ jobs:
           php-version: 8.2
           tools: composer:v2
       - run: composer install --no-progress
-      - run: echo '```markdown' > report.md
-      - run: vendor/bin/phpbench run --report=aggregate >> report.md
-      - run: echo '```' >> report.md
+      - run: echo '```markdown' > ./report.md
+      - run: vendor/bin/phpbench run --report=aggregate >> ./report.md
+      - run: echo '```' >> ./report.md
       - uses: mshick/add-pr-comment@v2
         with:
           message-path: report.md
