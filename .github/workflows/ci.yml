@@ -21,7 +21,7 @@ jobs:
       - run: composer install --no-progress
       - run: echo '```markdown' > report.md
       - run: vendor/bin/phpbench run --report=aggregate >> report.md
-      - run: echo '```' >> report.md'
+      - run: echo '```' >> report.md
       - uses: mshick/add-pr-comment@v2
         with:
           message-path: report.md
