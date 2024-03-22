@@ -1,14 +1,14 @@
 ---
 name: CI
 on:
-  push:
-    branches: ['main']
-  pull_request: ~
+  pull_request: true
 
 jobs:
   phpbench:
     name: PHPBench on ${{ matrix.php }} ${{ matrix.composer-flags }}
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v2
       - uses: shivammathur/setup-php@v2
@@ -21,3 +21,9 @@ jobs:
         with:
           name: bhpbench_report
           path: report.txt
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **Hello**
+            🌏
+            !
