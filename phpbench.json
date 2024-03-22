@@ -2,12 +2,5 @@
     "runner.path": "benchmarks",
     "$schema":"./vendor/phpbench/phpbench/phpbench.schema.json",
     "runner.bootstrap": "vendor/autoload.php",
-    "runner.php_disable_ini": true,
-    "report.outputs": {
-        "build-artifact": {
-            "renderer": "html",
-            "path": "path/to/something.html",
-            "title": "All Your Benchmark Are Belong to Us"
-        }
-    }
+    "runner.php_disable_ini": true
 }
