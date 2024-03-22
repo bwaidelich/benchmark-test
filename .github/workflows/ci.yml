@@ -20,13 +20,6 @@ jobs:
           tools: composer:v2
       - run: composer install --no-progress
       - run: vendor/bin/phpbench run --report=aggregate > report.txt
-      - uses: actions/upload-artifact@v4
-        with:
-          name: bhpbench_report
-          path: report.txt
       - uses: mshick/add-pr-comment@v2
         with:
-          message: |
-            **Hello**
-            🌏
-            !!
+          message-path: report.txt
