@@ -19,8 +19,9 @@ jobs:
           php-version: 8.2
           tools: composer:v2
       - run: composer install --no-progress
-      - run: vendor/bin/phpbench run --report=aggregate > report.txt
+      - run: '```markdown' > ./report.md
+      - run: vendor/bin/phpbench run --report=aggregate >> report.md
+      - run: '```' >> ./report.md
       - uses: mshick/add-pr-comment@v2
         with:
-          message-path: report.txt
-          preformatted: true
+          message-path: report.md
